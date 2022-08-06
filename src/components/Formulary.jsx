@@ -1,6 +1,7 @@
 import React from "react";
 import { MARCAS, YEARS, PLANS } from "../constants";
 import { useCotizador } from "../hook/useCotizador";
+import { Error } from "./Error";
 
 export const Formulary = () => {
   const { handleChangeData, dataForm, error, setError } = useCotizador();
@@ -16,8 +17,8 @@ export const Formulary = () => {
   };
   return (
     <>
+      {error && <Error>Todos los campos son requeridos mi compa</Error>}
       <form onSubmit={handleSubmitData}>
-        {error && <p>Todos los campos son requeridos mi compa</p>}
         <div className="my-5">
           <label className="block mb-3 font-bold text-gray-400 uppercase">
             Marca

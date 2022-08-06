@@ -11,7 +11,6 @@ export const AppSseguro = () => {
         </h1>
       </header>
       <main className="bg-white md:w-2/3 lg:w-2/4 mx-auto shadow rounded-lg p-10">
-        <p>Contenido principal</p>
         <Formulary />
       </main>
     </>
