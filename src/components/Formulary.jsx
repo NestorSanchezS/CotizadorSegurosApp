@@ -4,20 +4,22 @@ import { useCotizador } from "../hook/useCotizador";
 import { Error } from "./Error";
 
 export const Formulary = () => {
-  const { handleChangeData, dataForm, error, setError } = useCotizador();
+  const { handleChangeData, dataForm, error, setError, QuoteInsurance } =
+    useCotizador();
 
   const handleSubmitData = (e) => {
     e.preventDefault();
 
     if (Object.values(dataForm).includes("")) {
       setError(true);
-    } else {
-      setError(false);
+      return;
     }
+    setError(false);
+    QuoteInsurance();
   };
   return (
     <>
-      {error && <Error>Todos los campos son requeridos mi compa</Error>}
+      {error && <Error>Todos los campos son requeridos</Error>}
       <form onSubmit={handleSubmitData}>
         <div className="my-5">
           <label className="block mb-3 font-bold text-gray-400 uppercase">

@@ -17,9 +17,13 @@ export const CotizadorProvider = ({ children }) => {
       [target.name]: target.value,
     });
   };
+
+  const QuoteInsurance = () => {
+    console.log("Cotizando...");
+  };
   return (
     <CotizadorContext.Provider
-      value={{ handleChangeData, dataForm, error, setError }}
+      value={{ handleChangeData, dataForm, error, setError, QuoteInsurance }}
     >
       {children}
     </CotizadorContext.Provider>
