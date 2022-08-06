@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createContext } from "react";
+import { getYearDifference } from "../helpers";
 
 export const CotizadorContext = createContext();
 
@@ -19,7 +20,11 @@ export const CotizadorProvider = ({ children }) => {
   };
 
   const QuoteInsurance = () => {
-    console.log("Cotizando...");
+    let result = 2000;
+    //obtener diferencias de años
+    const difference = getYearDifference(dataForm.year);
+    //resta el 3% de cada año
+    result -= (difference * 3 * result) / 100;
   };
   return (
     <CotizadorContext.Provider
