@@ -33,7 +33,7 @@ export const Formulary = () => {
           >
             <option value="">-- Selecciona Marca --</option>
             {MARCAS.map((marca) => (
-              <option key={marca.id} value={marca.name}>
+              <option key={marca.id} value={marca.id}>
                 {marca.name}
               </option>
             ))}

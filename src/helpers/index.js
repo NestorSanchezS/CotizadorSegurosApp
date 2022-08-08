@@ -1,10 +1,11 @@
+//Obtiene Diferencia de años
 export const getYearDifference = (year) => {
   return new Date().getFullYear() - year;
 };
 
-export const calculateMark = (mark) => {
+export const calculateMark = (marca) => {
   let increment;
-  switch (mark) {
+  switch (marca) {
     case "1":
       increment = 1.3;
       break;
@@ -17,6 +18,13 @@ export const calculateMark = (mark) => {
     default:
       break;
   }
-
   return increment;
 };
+
+export const calculatePlan = (plan) => (plan === "1" ? 1.2 : 1.5);
+
+export const formatMoney = (amount) =>
+  amount.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
