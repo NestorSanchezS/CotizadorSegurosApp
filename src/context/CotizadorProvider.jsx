@@ -17,6 +17,7 @@ export const CotizadorProvider = ({ children }) => {
     plan: "",
   });
   const [result, setResult] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const handleChangeData = ({ target }) => {
     setDataForm({
@@ -35,7 +36,11 @@ export const CotizadorProvider = ({ children }) => {
     result *= calculateMark(dataForm.marca);
     result *= calculatePlan(dataForm.plan);
     result = formatMoney(result);
-    setResult(result);
+    setLoading(true);
+    setTimeout(() => {
+      setResult(result);
+      setLoading(false);
+    }, 3000);
   };
   return (
     <CotizadorContext.Provider
@@ -46,6 +51,7 @@ export const CotizadorProvider = ({ children }) => {
         setError,
         QuoteInsurance,
         result,
+        loading,
       }}
     >
       {children}

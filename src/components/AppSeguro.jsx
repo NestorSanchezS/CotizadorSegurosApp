@@ -3,7 +3,7 @@ import { useCotizador } from "../hook/useCotizador";
 import { Formulary } from "./Formulary";
 
 export const AppSseguro = () => {
-  const { result } = useCotizador();
+  const { result, loading } = useCotizador();
   return (
     <>
       <header className="my-10">
@@ -14,8 +14,8 @@ export const AppSseguro = () => {
       </header>
       <main className="bg-white md:w-2/3 lg:w-2/4 mx-auto shadow rounded-lg p-10">
         <Formulary />
+        {loading ? "cargando" : result}
       </main>
-      {result}
     </>
   );
 };
