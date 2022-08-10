@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import { MARCAS, PLANS } from "../constants";
 import { useCotizador } from "../hook/useCotizador";
 
@@ -6,8 +6,14 @@ export const Result = () => {
   const { result, dataForm } = useCotizador();
   const { marca, year, plan } = dataForm;
 
-  const [mark] = MARCAS.filter((m) => m.id === Number(marca));
-  const [plane] = PLANS.filter((P) => P.id === Number(plan));
+  const [mark] = useCallback(
+    MARCAS.filter((m) => m.id === Number(marca)),
+    [result]
+  );
+  const [plane] = useCallback(
+    PLANS.filter((P) => P.id === Number(plan)),
+    [result]
+  );
   console.log(plane);
   if (result === 0) return null;
 
