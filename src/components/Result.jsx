@@ -6,6 +6,8 @@ export const Result = () => {
   const { result, dataForm } = useCotizador();
   const { marca, year, plan } = dataForm;
 
+  const yearRef = useRef(year);
+
   const [mark] = useCallback(
     MARCAS.filter((m) => m.id === Number(marca)),
     [result]
@@ -14,7 +16,7 @@ export const Result = () => {
     PLANS.filter((P) => P.id === Number(plan)),
     [result]
   );
-  console.log(plane);
+
   if (result === 0) return null;
 
   return (
@@ -30,7 +32,7 @@ export const Result = () => {
       </p>
       <p className="my-2">
         <span className="font-bold">Año del Auto:</span>
-        {year}
+        {yearRef.current}
       </p>
       <p className="my-2 text-2xl">
         <span className="font-bold">Total cotizacions:</span>
