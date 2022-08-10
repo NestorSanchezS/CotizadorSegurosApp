@@ -1,7 +1,35 @@
 import React from "react";
+import { MARCAS, PLANS } from "../constants";
 import { useCotizador } from "../hook/useCotizador";
 
 export const Result = () => {
-  const { result } = useCotizador();
-  return <div>{result}</div>;
+  const { result, dataForm } = useCotizador();
+  const { marca, year, plan } = dataForm;
+
+  const [mark] = MARCAS.filter((m) => m.id === Number(marca));
+  const [plane] = PLANS.filter((P) => P.id === Number(plan));
+  console.log(plane);
+  if (result === 0) return null;
+
+  return (
+    <div className="bg-gray-100 text-center mt-5 p-5 shadow">
+      <h2 className="text-gray-600 font-black text-3xl">Resumens</h2>
+      <p className="my-2">
+        <span className="font-bold">Marca:</span>
+        {mark.id}
+      </p>
+      <p className="my-2">
+        <span className="font-bold">Plan:</span>
+        {plane.name}
+      </p>
+      <p className="my-2">
+        <span className="font-bold">Año del Auto:</span>
+        {year}
+      </p>
+      <p className="my-2 text-2xl">
+        <span className="font-bold">Total cotizacions:</span>
+        {result}
+      </p>
+    </div>
+  );
 };
